@@ -1,7 +1,13 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // Use the key defined in .env.local
-const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API || '');
+const apiKey = import.meta.env.VITE_GEMINI_API;
+
+if (!apiKey) {
+  console.warn("Gemini API Key is missing! Make sure VITE_GEMINI_API is set in your environment variables.");
+}
+
+const genAI = new GoogleGenerativeAI(apiKey || 'MISSING_KEY');
 
 export const generateReviewReply = async (
   reviewText: string,
