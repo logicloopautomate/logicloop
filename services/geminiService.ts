@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // Use the key defined in .env.local
-const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY || '');
+const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API || '');
 
 export const generateReviewReply = async (
   reviewText: string,
