@@ -10,7 +10,7 @@ export const generateReviewReply = async (
 ) => {
   try {
     const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
+      model: "gemini-2.5-flash",
       systemInstruction: `You are a professional customer response assistant replying to Google reviews for a local business. 
 
 Your goal is to write a polite, humble, natural, and human reply that addresses the customer's experience directly.
