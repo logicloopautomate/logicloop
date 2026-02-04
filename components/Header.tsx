@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
-export const Header: React.FC = () => {
+export const Header: React.FC = React.memo(() => {
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
 
@@ -40,4 +40,4 @@ export const Header: React.FC = () => {
       </div>
     </header>
   );
-};
+});

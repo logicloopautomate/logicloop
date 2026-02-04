@@ -14,6 +14,18 @@ export default defineConfig(({ mode }) => {
       alias: {
         '@': path.resolve(__dirname, '.'),
       }
+    },
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'vendor': ['react', 'react-dom', 'react-router-dom'],
+            'motion': ['framer-motion'],
+            'icons': ['lucide-react'],
+          }
+        }
+      },
+      chunkSizeWarningLimit: 600,
     }
   };
 });

@@ -55,8 +55,17 @@ export const OnboardingPage: React.FC = () => {
         setFormData(prev => ({ ...prev, [key]: value }));
     }, []);
 
-    const isEmailValid = useMemo(() => formData.email.includes('@') && formData.email.includes('.com'), [formData.email]);
-    const isWebsiteValid = useMemo(() => formData.websiteUrl.includes('.'), [formData.websiteUrl]);
+    // Improved email validation using proper regex
+    const isEmailValid = useMemo(() => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(formData.email);
+    }, [formData.email]);
+
+    // Improved website validation using proper regex
+    const isWebsiteValid = useMemo(() => {
+        const urlRegex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+        return formData.websiteUrl.length > 0 && urlRegex.test(formData.websiteUrl);
+    }, [formData.websiteUrl]);
 
     const nextStep = useCallback(() => setStep(prev => Math.min(prev + 1, 4)), []);
     const prevStep = useCallback(() => setStep(prev => Math.max(prev - 1, 1)), []);

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Bot, ArrowRight, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-export const Hero: React.FC = () => {
+export const Hero: React.FC = React.memo(() => {
   return (
     <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden bg-[#FAFAFA]">
       {/* Background Gradients */}
@@ -73,4 +73,5 @@ export const Hero: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+

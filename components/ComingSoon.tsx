@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Video, Instagram, TrendingUp } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-export const ComingSoon: React.FC = () => {
+export const ComingSoon: React.FC = React.memo(() => {
   const navigate = useNavigate();
   return (
     <section id="coming-soon" className="py-24 bg-white relative overflow-hidden">
@@ -15,19 +15,18 @@ export const ComingSoon: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="flex-1 order-2 md:order-1 relative"
           >
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-tr from-blue-400 to-blue-600 rounded-3xl blur opacity-30 group-hover:opacity-40 transition duration-1000"></div>
-              {/* Use the specific artifact path if copying fails, but assuming copy works to public/video_analysis.png */}
-              {/* Note: In previous step I am copying it to public/video_analysis.png. */}
-              {/* Wait, the generate_image tool adds a timestamp to the filename! I must capture that. */}
-              {/* I can't know the timestamped filename in the same turn before generation. */}
-              {/* I need to do generation in one turn, and copy/code in the next. */}
-              {/* For now, I will use a placeholder or assume I fix it next turn. */}
-              {/* actually I will use a generic placeholder name in code and fix the file usage in next turn. */}
-              <img src="/video_analysis.png" className="relative rounded-2xl shadow-2xl border border-white/50 w-full" alt="Video Review Analysis" />
+              <img
+                src="/video_analysis.png"
+                className="relative rounded-2xl shadow-2xl border border-white/50 w-full"
+                alt="Video Review Analysis"
+                loading="lazy"
+              />
             </div>
 
             {/* Design Elements */}
@@ -95,4 +94,5 @@ export const ComingSoon: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+

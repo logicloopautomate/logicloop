@@ -12,7 +12,32 @@ import {
     MoreHorizontal
 } from 'lucide-react';
 
-export const DashboardMockup: React.FC = () => {
+// Type definitions for component props
+interface NavItemProps {
+    icon: React.ReactNode;
+    label: string;
+    active?: boolean;
+}
+
+interface StatCardProps {
+    label: string;
+    value: string;
+    trend: string;
+    trendUp?: boolean;
+    active?: boolean;
+    starColor?: boolean;
+}
+
+interface ReviewItemProps {
+    author: string;
+    platform: string;
+    rating: number;
+    comment: string;
+    replied?: boolean;
+    needsAction?: boolean;
+}
+
+export const DashboardMockup: React.FC = React.memo(() => {
     return (
         <div className="relative rounded-3xl p-2 bg-gradient-to-b from-white to-slate-100 border border-slate-200 shadow-2xl overflow-hidden group">
             {/* Dashboard container */}
@@ -167,16 +192,16 @@ export const DashboardMockup: React.FC = () => {
             </motion.div>
         </div>
     );
-};
+});
 
-const NavItem = ({ icon, label, active = false }: { icon: any, label: string, active?: boolean }) => (
+const NavItem: React.FC<NavItemProps> = ({ icon, label, active = false }) => (
     <div className={`flex items-center gap-3 p-2.5 rounded-xl transition-all cursor-pointer group ${active ? 'bg-blue-600 text-white shadow-lg shadow-blue-200' : 'text-slate-500 hover:bg-white hover:text-blue-600'}`}>
         <span className="shrink-0">{icon}</span>
         <span className={`hidden md:block text-sm font-bold ${active ? 'text-white' : 'text-slate-600 group-hover:text-blue-600'}`}>{label}</span>
     </div>
 );
 
-const StatCard = ({ label, value, trend, trendUp, active, starColor }: any) => (
+const StatCard: React.FC<StatCardProps> = ({ label, value, trend, trendUp, active, starColor }) => (
     <div className={`p-4 rounded-2xl border ${active ? 'bg-blue-600 border-blue-500 text-white shadow-lg shadow-blue-100' : 'bg-white border-slate-100 shadow-sm'}`}>
         <p className={`text-xs font-bold uppercase tracking-wider mb-1 ${active ? 'text-blue-200' : 'text-slate-400'}`}>{label}</p>
         <div className="flex items-end justify-between">
@@ -188,7 +213,7 @@ const StatCard = ({ label, value, trend, trendUp, active, starColor }: any) => (
     </div>
 );
 
-const ReviewItem = ({ author, platform, rating, comment, replied, needsAction }: any) => (
+const ReviewItem: React.FC<ReviewItemProps> = ({ author, platform, rating, comment, replied, needsAction }) => (
     <div className="flex items-start gap-4 p-3 hover:bg-slate-50 rounded-xl transition-all border border-transparent hover:border-slate-100 cursor-pointer">
         <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0 border border-slate-200 text-xs font-bold text-slate-500">
             {author.split(' ').map((n: string) => n[0]).join('')}

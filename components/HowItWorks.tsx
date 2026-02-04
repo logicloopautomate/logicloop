@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Search, PhoneCall, TrendingUp, CheckCircle2, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
+// Static data extracted outside component to prevent recreation on each render
 const steps = [
     {
         icon: <Search className="w-8 h-8 text-blue-600" />,
@@ -26,11 +28,7 @@ const steps = [
     }
 ];
 
-
-
-import { useNavigate } from 'react-router-dom';
-
-export const HowItWorks: React.FC = () => {
+export const HowItWorks: React.FC = React.memo(() => {
     const navigate = useNavigate();
 
     return (
@@ -127,6 +125,7 @@ export const HowItWorks: React.FC = () => {
             </div>
         </section>
     );
-};
+});
+
 
 

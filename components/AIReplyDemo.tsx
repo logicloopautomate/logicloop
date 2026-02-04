@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { generateReviewReply } from '../services/geminiService';
 
-export const AIReplyDemo: React.FC = () => {
+export const AIReplyDemo: React.FC = React.memo(() => {
   const [review, setReview] = useState("I loved the atmosphere and the coffee was incredible! The staff was so welcoming.");
   const [author, setAuthor] = useState("Sarah J.");
   const [businessType, setBusinessType] = useState("Coffee Shop");
@@ -99,4 +99,5 @@ export const AIReplyDemo: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+

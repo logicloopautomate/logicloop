@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-export const Footer: React.FC = () => {
+export const Footer: React.FC = React.memo(() => {
   return (
     <footer className="bg-slate-50 pt-20 pb-10 border-t border-slate-100">
       <div className="container mx-auto px-6">
@@ -58,4 +58,4 @@ export const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
+});
