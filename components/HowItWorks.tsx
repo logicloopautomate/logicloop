@@ -28,7 +28,11 @@ const steps = [
 
 
 
+import { useNavigate } from 'react-router-dom';
+
 export const HowItWorks: React.FC = () => {
+    const navigate = useNavigate();
+
     return (
         <section id="how-it-works" className="py-24 bg-[#FAFAFA] overflow-hidden">
             <div className="container mx-auto px-6">
@@ -112,7 +116,7 @@ export const HowItWorks: React.FC = () => {
                 >
                     <div className="inline-block p-1 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 shadow-xl shadow-blue-200/50">
                         <button
-                            onClick={() => (window.location.href = '/get-started')}
+                            onClick={() => navigate('/get-started')}
                             className="bg-white text-slate-900 px-10 py-5 rounded-[0.9rem] font-black text-lg hover:bg-slate-50 transition-colors flex items-center gap-3"
                         >
                             Start Your Free Assessment
